@@ -1,0 +1,16 @@
+defaults:
+- pamal
+
+inner_method: gradnorm
+
+# multi-forward
+num: 3
+temperature: 1
+reg_coefficient: 2
+
+
+
+p: 1
+
+
+

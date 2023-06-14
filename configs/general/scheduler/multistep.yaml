@@ -1,0 +1,2 @@
+lr_schedule: multistep
+gamma: 0.1

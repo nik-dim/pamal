@@ -1,0 +1,15 @@
+dataset: utkface
+ffcv: False
+num_tasks: 3
+batch_size: 256
+num_workers: 12
+valid_batch_size: 512
+num_training_samples: 23705
+pct_train_split: 0.9
+task_ids: 
+
+task_names: [
+   "age",
+   "gender", 
+   "race",
+]

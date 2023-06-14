@@ -1,0 +1,3 @@
+lr_schedule: cyclic
+lr_min: 0.01
+lr_max: 0.1

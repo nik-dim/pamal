@@ -1,0 +1,2 @@
+encoder: MultiLeNetR
+decoder: MultiLeNetO

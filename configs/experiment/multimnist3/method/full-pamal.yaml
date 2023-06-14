@@ -1,0 +1,14 @@
+defaults:
+- pamal
+
+# multi-forward
+num: 3
+temperature: 1
+reg_coefficient: 2
+
+
+
+p: 1
+
+
+

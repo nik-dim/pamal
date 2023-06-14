@@ -1,0 +1,2 @@
+encoder: resnet18
+decoder: unet

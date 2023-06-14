@@ -1,0 +1,9 @@
+dataset: cifar10
+num_tasks: 2
+ffcv: False
+batch_size: 512
+num_training_samples: 50000
+num_workers: 12
+valid_batch_size: 1024
+task_ids: [0,1]
+task_names: [clean, robust]

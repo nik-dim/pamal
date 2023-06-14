@@ -1,0 +1,31 @@
+# @package _global_
+comment: utkface config
+defaults:
+    - _self_
+    - /data: cityscapes
+    - method: pamal
+    - wandb: wandb
+
+model:
+    type: segnet
+    
+optimizer:
+    type: Adam
+    lr: 1E-4
+scheduler:
+    step: 75
+    gamma: 0.5
+training:
+    epochs: 100
+    
+validate_every_n: 20
+seed: 0
+device: 0
+hydra:
+  searchpath:
+    - file://configs/general
+  run:
+    dir: ./logs/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ./logs/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.num}

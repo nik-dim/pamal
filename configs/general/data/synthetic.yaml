@@ -1,0 +1,9 @@
+dataset: synthetic
+num_tasks: 2
+batch_size: 64
+num_workers: 12
+valid_batch_size: 256
+alpha: 4
+train_points: 2000
+valid_points: 1000
+test_points: 1000

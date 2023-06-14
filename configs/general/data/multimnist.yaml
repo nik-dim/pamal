@@ -1,0 +1,6 @@
+dataset: multimnist
+num_tasks: 2
+ffcv: False
+batch_size: 256
+num_workers: 1
+valid_batch_size: 512

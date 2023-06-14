@@ -1,0 +1,6 @@
+dataset: cityscapes
+ffcv: False
+num_tasks: 2
+batch_size: 8
+num_workers: 10
+apply_augmentation: true

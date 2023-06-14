@@ -1,0 +1,9 @@
+name: pamal
+validate_models: 11
+reinit_flag: true
+p: 1
+
+inner_method: ls
+
+num: 1
+

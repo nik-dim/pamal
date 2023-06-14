@@ -1,0 +1,7 @@
+dataset: census
+batch_size: 256
+num_workers: 10
+income: false
+age: true
+education: true
+never_married: false

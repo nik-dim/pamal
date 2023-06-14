@@ -1,0 +1,9 @@
+dataset: multimnist-rotated
+angle: 20
+num_tasks: 2
+ffcv: False
+batch_size: 256
+num_workers: 12
+valid_batch_size: 512
+task_names: [top-left, bottom-right]
+task_ids:

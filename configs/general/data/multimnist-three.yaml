@@ -1,0 +1,8 @@
+dataset: multimnistThree
+num_tasks: 3
+ffcv: False
+batch_size: 256
+num_workers: 12
+valid_batch_size: 512
+task_names: [top-left, top-right, bottom]
+task_ids:
