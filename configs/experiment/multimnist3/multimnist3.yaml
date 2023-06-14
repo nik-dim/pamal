@@ -3,7 +3,7 @@ comment: multimnist3 config
 defaults:
     - _self_
     - /data: multimnist3
-    - method: full-pamal
+    - method: pamal
     - wandb: wandb
 
 model:
