@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 import hydra
 import torch
@@ -27,6 +28,7 @@ def my_app(config: DictConfig) -> None:
     initialize_wandb(config)
 
     dm = MultiMnistThreeDataModule(
+        **(dict() if config.data.root is None else dict(root=Path(config.data.root))),
         batch_size=config.data.batch_size,
         num_workers=config.data.num_workers,
     )

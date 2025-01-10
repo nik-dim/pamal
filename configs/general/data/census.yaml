@@ -5,3 +5,4 @@ income: false
 age: true
 education: true
 never_married: false
+root:       # if not set, will use the default path defined in the data module class

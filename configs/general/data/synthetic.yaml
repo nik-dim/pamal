@@ -7,3 +7,4 @@ alpha: 4
 train_points: 2000
 valid_points: 1000
 test_points: 1000
+root:       # if not set, will use the default path defined in the data module class

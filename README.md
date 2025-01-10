@@ -30,14 +30,15 @@ For example, we can run experiments on the MultiMNIST dataset as follows:
 
 ```bash
 # run experiment on MultiMNIST using the proposed method (PaMaL) 
-python multimnist.py method=pamal
+python multimnist.py method=pamal data.root=/path/to/data
 
 # ...modify the `inner_method` parameter specific to pamal
-python multimnist.py method=pamal method.inner_method=ls # or gradnorm or rwa
+python multimnist.py method=pamal data.root=/path/to/data method.inner_method=ls # or gradnorm or rwa
 
 # run the same experiment for a baseline
-python multimnist.py method=ls # or mgda or phn etc
+python multimnist.py data.root=/path/to/data method=ls # or mgda or phn etc
 ```
+
 
 To launch multiple experiments at the same time (e.g. ablation studies), we can use the `--multirun` (`-m`) flag. Note that this flag is sometimes problematic in conjunction with Weights&Biases logging. For example, to run the ablation study for the proposed method, we can run:
 

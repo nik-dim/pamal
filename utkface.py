@@ -1,21 +1,22 @@
 import logging
+from pathlib import Path
 
 import hydra
+import wandb
 from omegaconf import DictConfig, OmegaConf
 
-import wandb
-from src.utils._selectors import get_ensemble_model, get_optimizer, get_trainer
-from src.models.factory.cosmos.upsampler import Upsampler
 from src.datasets.utkface import UTKFaceDataModule
+from src.models.factory.cosmos.upsampler import Upsampler
+from src.models.factory.phn.phn_wrappers import HyperModel
 from src.models.factory.resnet import BasicBlock, MLPDecoder, ResNetEncoder, UtkFaceResnet
+from src.models.factory.rotograd import RotogradWrapper
 from src.utils import set_seed
+from src.utils._selectors import get_ensemble_model, get_optimizer, get_trainer
+from src.utils.callbacks.auto_lambda_callback import AutoLambdaCallback
 from src.utils.callbacks.mtl_metric_callback import UTKFaceMultiTaskMetricCallback
 from src.utils.callbacks.save_model import SaveModelCallback
-from src.utils.logging_utils import install_logging, initialize_wandb
+from src.utils.logging_utils import initialize_wandb, install_logging
 from src.utils.losses import UTKFaceMultiTaskLoss
-from src.models.factory.phn.phn_wrappers import HyperModel
-from src.models.factory.rotograd import RotogradWrapper
-from src.utils.callbacks.auto_lambda_callback import AutoLambdaCallback
 
 
 @hydra.main(config_path="configs/experiment/utkface", config_name="utkface")
@@ -26,6 +27,7 @@ def my_app(config: DictConfig) -> None:
     initialize_wandb(config)
 
     dm = UTKFaceDataModule(
+        **(dict() if config.data.root is None else dict(root=config.data.root)),
         batch_size=config.data.batch_size,
         num_workers=config.data.num_workers,
     )

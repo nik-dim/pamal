@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 
 import hydra
 import torch
@@ -26,7 +27,11 @@ def my_app(config: DictConfig) -> None:
 
     initialize_wandb(config)
 
-    dm = MultiMnistDataModule(batch_size=config.data.batch_size, num_workers=config.data.num_workers)
+    dm = MultiMnistDataModule(
+        **(dict() if config.data.root is None else dict(root=config.data.root)),
+        batch_size=config.data.batch_size,
+        num_workers=config.data.num_workers,
+    )
     logging.info(f"I am using the following benchmark {dm.name}")
     if config.method.name == "phn":
         model = HyperModel(dm.name)

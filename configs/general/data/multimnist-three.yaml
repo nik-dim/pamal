@@ -6,3 +6,4 @@ num_workers: 12
 valid_batch_size: 512
 task_names: [top-left, top-right, bottom]
 task_ids:
+root:       # if not set, will use the default path defined in the data module class

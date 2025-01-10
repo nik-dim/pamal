@@ -137,7 +137,7 @@ dmypy.json
 
 # USER DEFINED
 *.ipynb
-# wandb/
 __zzz__/
 logs/
-wandb/
+wandb/*
+!configs/general/wandb/wandb.yaml

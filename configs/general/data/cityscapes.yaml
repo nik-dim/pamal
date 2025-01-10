@@ -4,3 +4,4 @@ num_tasks: 2
 batch_size: 8
 num_workers: 10
 apply_augmentation: true
+root:       # if not set, will use the default path defined in the data module class

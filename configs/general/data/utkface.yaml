@@ -13,3 +13,4 @@ task_names: [
    "gender", 
    "race",
 ]
+root:       # if not set, will use the default path defined in the data module class

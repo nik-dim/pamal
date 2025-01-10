@@ -1,19 +1,20 @@
 import logging
+from pathlib import Path
 
 import hydra
 import torch
 import wandb
 from omegaconf import DictConfig, OmegaConf
 
-from src.utils._selectors import get_callbacks, get_ensemble_model, get_optimizer, get_trainer
 from src.datasets.census import TestCensusDataModule
 from src.models.factory.cosmos.upsampler import Upsampler
 from src.models.factory.mlp import MultiTaskMLP
 from src.models.factory.phn.phn_wrappers import HyperModel
-from src.utils import set_seed
-from src.utils.callbacks.auto_lambda_callback import AutoLambdaCallback
-from src.utils.logging_utils import install_logging, initialize_wandb
 from src.models.factory.rotograd import RotogradWrapper
+from src.utils import set_seed
+from src.utils._selectors import get_callbacks, get_ensemble_model, get_optimizer, get_trainer
+from src.utils.callbacks.auto_lambda_callback import AutoLambdaCallback
+from src.utils.logging_utils import initialize_wandb, install_logging
 from src.utils.losses import MultiTaskCrossEntropyLoss
 
 
@@ -25,6 +26,7 @@ def my_app(config: DictConfig) -> None:
 
     set_seed(config.seed)
     dm = TestCensusDataModule(
+        **(dict() if config.data.root is None else dict(root=Path(config.data.root))),
         batch_size=config.data.batch_size,
         num_workers=config.data.num_workers,
         income=config.data.income,
