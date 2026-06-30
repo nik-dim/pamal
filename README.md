@@ -1,6 +1,10 @@
 # PaMaL
 Official implementation of [Pareto Manifold Learning: Tackling multiple tasks via ensembles of single-task models](https://arxiv.org/abs/2210.09759). 
 
+## Related work
+
+PaMaL is continued in [PaLoRA (Pareto Low-Rank Adapters)](https://github.com/nik-dim/palora), which develops a more computationally efficient approach to multi-task learning with preferences using low-rank adapters.
+
 ![PaMaL](docs/media/img.png)
 ## Installation
 
@@ -92,6 +96,10 @@ The repository supports the datasets in the table below. By default, the dataset
 | Cityscapes  | needs to be downloaded |
 | CelebA      | needs to be downloaded |
 
+### MultiMNIST data and reproducibility
+
+The MultiMNIST results can depend on the randomness used when generating the dataset. The experiments reported in the paper used a single dataset generated at the beginning of the project and kept fixed throughout. To reproduce the reported setup, download that dataset from [Google Drive](https://drive.google.com/drive/folders/1j21U_rWp99VI0HAo1la7qwvdW3yMZtjE?usp=sharing) and pass its location through `data.root`.
+
 
 ## Extending the codebase
 The code is structured similar to PyTorch Lightning. We have used various codebase sources for baselines. For this reason, the API is not consistent for all baselines. Most baselines can be found in [`src/methods/weight_methods.py`](src/methods/weight_methods.py). However, `graddrop`, `autol`, `rotograd`, `phn` and `cosmos` are implemented in their own specific way. In order to add a new `single solution` method, check [`src/methods/weight_methods.py`](src/methods/weight_methods.p) where multiple loss and gradient balancing methods can be found. For `multi solution` methods check [`src/trainer/multi_solution_trainer.py`](src/trainer/multi_solution_trainer.py).
@@ -109,7 +117,7 @@ The reporsitory makes heavy use of previously developped codebases. Specifically
 
 
 ## Citation
-If you find our work useful, please consider citing our paper:
+If you find this code or the PaMaL/PaLoRA line of work useful, please cite both papers:
 ```bibtex
 @inproceedings{
     dimitriadis2023pareto,
@@ -119,7 +127,16 @@ If you find our work useful, please consider citing our paper:
     year={2023},
     url={https://arxiv.org/abs/2210.09759}
 }
+
+@inproceedings{
+    dimitriadis2025pareto,
+    title={Pareto Low-Rank Adapters: Efficient Multi-Task Learning with Preferences},
+    author={Dimitriadis, Nikolaos and Frossard, Pascal and Fleuret, Fran{\c{c}}ois},
+    booktitle={International Conference on Learning Representations},
+    year={2025},
+    url={https://openreview.net/forum?id=icDoYdUhRa}
+}
 ```
 
 ## Contact
-If you have any questions, please contact nikolaos.dimitriadis@epfl.ch. 
+If you have any questions, please contact nikolaos.dimitriadis@epfl.ch.
